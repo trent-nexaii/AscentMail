@@ -489,3 +489,59 @@ h2 { letter-spacing: -.01em; }
 .industries-row li:hover { color: var(--navy); }
 .industries-row li:hover .ind-icon { background: rgba(23, 162, 184, .14); }
 .ind-icon { transition: background .2s; }
+
+/* ---------- Geo maps (dot-matrix) ---------- */
+.territory-maps {
+  grid-template-columns: 2.1fr 1fr;
+  background: radial-gradient(70% 60% at 50% 35%, rgba(23, 162, 184, .07), transparent 75%), rgba(7, 22, 40, .5);
+}
+.map-dot { fill: rgba(255, 255, 255, .16); }
+.map-coast path { stroke: rgba(255, 255, 255, .22); stroke-width: 1; fill: none; stroke-linejoin: round; }
+.city { color: var(--teal); }
+.city-reserved { color: var(--gold); }
+.city-claimed { color: #5B9BD5; }
+.city-halo { fill: currentColor; opacity: .16; animation: halo 2.6s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+.city-reserved .city-halo { animation-delay: .9s; }
+.city-claimed .city-halo { animation-delay: 1.6s; }
+@keyframes halo { 0%, 100% { transform: scale(.7); opacity: .22; } 50% { transform: scale(1.15); opacity: .08; } }
+.city-dot { fill: currentColor; stroke: rgba(10, 28, 48, .9); stroke-width: 1.5; }
+.city-label { fill: rgba(255, 255, 255, .78); font-family: var(--font-body); font-size: 10.5px; font-weight: 500; letter-spacing: .01em; paint-order: stroke; stroke: rgba(10, 28, 48, .85); stroke-width: 3px; }
+.map-legend { gap: 18px; }
+.map-legend li { background: rgba(255, 255, 255, .06); border: 1px solid rgba(255, 255, 255, .08); border-radius: 999px; padding: 5px 14px; }
+
+/* Territory benefits as icon rows */
+.territory-benefits { gap: 14px; }
+.territory-benefits li { display: flex; align-items: center; gap: 14px; background: rgba(255, 255, 255, .05); border: 1px solid rgba(255, 255, 255, .08); border-radius: 10px; padding: 13px 16px; }
+.tb-icon { display: grid; place-items: center; flex-shrink: 0; width: 38px; height: 38px; border-radius: 9px; background: rgba(23, 162, 184, .16); color: var(--teal); }
+.tb-icon svg { width: 20px; height: 20px; }
+
+/* Hero underline accent */
+.accent-underline { position: relative; white-space: nowrap; }
+.accent-underline::after {
+  content: "";
+  position: absolute;
+  left: 2%;
+  right: 6%;
+  bottom: -.08em;
+  height: .22em;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 12' preserveAspectRatio='none'%3E%3Cpath d='M3 9 Q60 1 117 7' fill='none' stroke='%2317A2B8' stroke-width='4' stroke-linecap='round' opacity='.45'/%3E%3C/svg%3E") no-repeat center / 100% 100%;
+}
+
+/* Ascent column emphasis in comparison */
+.vs-ascent { background: rgba(23, 162, 184, .06); border: 1px solid rgba(23, 162, 184, .18); border-radius: 10px; padding: 20px; margin: -8px; }
+
+/* Airier rhythm on large screens */
+@media (min-width: 900px) {
+  section { padding: 96px 0; }
+  .hero { padding: 96px 0 88px; }
+}
+
+@media (max-width: 640px) {
+  .territory-maps { grid-template-columns: 1fr; }
+  .map-nz { max-width: 180px; margin: 0 auto; }
+  .city-label { font-size: 12px; }
+}
+
+/* Grid shrink containment for maps */
+.territory-grid > *, .territory-maps > * { min-width: 0; }
+.map { display: block; }
