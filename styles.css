@@ -395,9 +395,6 @@ section { padding: 72px 0; }
 .footer-nav a:hover, .footer-nav a:focus-visible { color: var(--teal); }
 .footer-bottom { border-top: 1px solid rgba(255, 255, 255, .12); padding-top: 20px; padding-bottom: 20px; font-size: .85rem; }
 
-/* Mobile sticky CTA bar */
-.mobile-cta-bar { display: none; position: fixed; left: 0; right: 0; bottom: 0; z-index: 90; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); background: rgba(255, 255, 255, .97); box-shadow: 0 -4px 20px rgba(27, 58, 95, .12); }
-
 /* Modal */
 .modal-overlay {
   position: fixed;
@@ -470,8 +467,6 @@ section { padding: 72px 0; }
   .territory-maps { grid-template-columns: 1fr; }
   .map-nz { max-width: 140px; margin: 0 auto; }
   .footer-inner { flex-direction: column; }
-  .mobile-cta-bar { display: block; }
-  body { padding-bottom: 68px; }
   .founding-ribbon { display: block; }
 }
 
