@@ -152,7 +152,7 @@
     var statItems = Array.prototype.slice.call(ticker.querySelectorAll(".stat-item"));
     var statDots = Array.prototype.slice.call(ticker.querySelectorAll(".stat-dot"));
     var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    var STAT_INTERVAL = 6000;
+    var STAT_INTERVAL = 4500;
     var STAT_RESUME_DELAY = 15000;
     var statIndex = 0;
     var statTimer = null;
