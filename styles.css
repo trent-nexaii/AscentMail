@@ -321,7 +321,9 @@ section { padding: 72px 0; }
 .feature-bar .eyebrow { display: block; text-align: center; margin-bottom: 36px; }
 .feature-bar .feat-icon { background: var(--white); box-shadow: var(--shadow); }
 .feature-items { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
-.feature-items li { display: flex; align-items: center; justify-content: center; gap: 12px; font-family: var(--font-head); color: var(--navy); font-size: .95rem; text-align: left; }
+.feature-items li { display: flex; align-items: flex-start; justify-content: center; gap: 12px; font-family: var(--font-head); color: var(--navy); font-size: .95rem; text-align: left; }
+.feature-items li strong { display: block; line-height: 1.35; padding-top: 11px; }
+.feature-items li > div { min-width: 0; }
 .feat-icon { display: grid; place-items: center; flex-shrink: 0; width: 42px; height: 42px; border-radius: 10px; background: rgba(31, 169, 198, .12); color: var(--navy); }
 .feature-items li:hover .feat-icon { color: var(--teal); }
 .feat-icon svg { width: 22px; height: 22px; }
