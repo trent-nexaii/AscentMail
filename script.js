@@ -144,4 +144,86 @@
     modalDone.focus();
     contactForm.reset();
   });
+
+  /* Rotating stats ticker (Why Ascent band) */
+  var ticker = document.getElementById("stat-ticker");
+  if (ticker) {
+    var statViewport = ticker.querySelector(".stat-viewport");
+    var statItems = Array.prototype.slice.call(ticker.querySelectorAll(".stat-item"));
+    var statDots = Array.prototype.slice.call(ticker.querySelectorAll(".stat-dot"));
+    var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    var STAT_INTERVAL = 6000;
+    var STAT_RESUME_DELAY = 15000;
+    var statIndex = 0;
+    var statTimer = null;
+    var statResumeTimer = null;
+    var statInView = false;
+    var statHovered = false;
+    var statClickPaused = false;
+
+    var setStatHeight = function () {
+      var max = 0;
+      statItems.forEach(function (item) { max = Math.max(max, item.offsetHeight); });
+      statViewport.style.height = max + "px";
+    };
+
+    var showStat = function (next) {
+      statItems.forEach(function (item) { item.classList.remove("is-exit"); });
+      if (next !== statIndex) {
+        /* the incoming stat must re-enter from below, not from a stale exit position */
+        void statItems[next].offsetWidth;
+        statItems[statIndex].classList.add("is-exit");
+      }
+      statItems.forEach(function (item, i) {
+        item.classList.toggle("is-active", i === next);
+        item.setAttribute("aria-hidden", i === next ? "false" : "true");
+      });
+      statDots.forEach(function (dot, i) {
+        dot.classList.toggle("is-active", i === next);
+        if (i === next) dot.setAttribute("aria-current", "true");
+        else dot.removeAttribute("aria-current");
+      });
+      statIndex = next;
+    };
+
+    var stopStats = function () {
+      if (statTimer) { clearInterval(statTimer); statTimer = null; }
+    };
+    var startStats = function () {
+      if (statTimer || statClickPaused || reduceMotion.matches || !statInView || statHovered) return;
+      statTimer = setInterval(function () {
+        showStat((statIndex + 1) % statItems.length);
+      }, STAT_INTERVAL);
+    };
+
+    statDots.forEach(function (dot, i) {
+      dot.addEventListener("click", function () {
+        showStat(i);
+        stopStats();
+        statClickPaused = true;
+        clearTimeout(statResumeTimer);
+        statResumeTimer = setTimeout(function () {
+          statClickPaused = false;
+          startStats();
+        }, STAT_RESUME_DELAY);
+      });
+    });
+
+    ticker.addEventListener("mouseenter", function () { statHovered = true; stopStats(); });
+    ticker.addEventListener("mouseleave", function () { statHovered = false; startStats(); });
+
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (entries) {
+        statInView = entries[0].isIntersecting;
+        if (statInView) startStats(); else stopStats();
+      }, { threshold: 0.3 }).observe(ticker);
+    } else {
+      statInView = true;
+      startStats();
+    }
+
+    setStatHeight();
+    window.addEventListener("resize", setStatHeight);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(setStatHeight);
+  }
 })();
