@@ -790,7 +790,17 @@
     <div class="modal-body" id="modal-form-view">
       <h2 id="modal-title">Book a Demo</h2>
       <p class="modal-sub">Tell us a little about your business and we'll be in touch within one business day.</p>
-      <form id="contact-form" action="#" method="post" novalidate>
+      <!-- FormSubmit.co delivery: the FIRST submission sends a one-time activation
+           email to hello@ascentmail.com.au — its confirmation link must be clicked
+           before deliveries start. Upgrade path: swap the action URL for an n8n
+           webhook to also log leads into Airtable. -->
+      <form id="contact-form" action="https://formsubmit.co/hello@ascentmail.com.au" method="POST" novalidate>
+        <input type="hidden" name="_subject" value="New Ascent Mail Demo Request">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <label class="honeypot" aria-hidden="true">Leave this field empty
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off">
+        </label>
         <div class="field">
           <label for="cf-name">Name</label>
           <input type="text" id="cf-name" name="name" autocomplete="name" required>
@@ -828,12 +838,13 @@
           <span class="field-error" aria-live="polite"></span>
         </div>
         <button type="submit" class="btn btn-teal btn-block">Request My Demo</button>
+        <p class="form-error" id="form-error" role="alert" hidden>Something went wrong and your request wasn't sent. Please try again. <a href="mailto:hello@ascentmail.com.au">Or email us directly</a>.</p>
       </form>
     </div>
     <div class="modal-body modal-success" id="modal-success-view" hidden>
       <span class="success-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12.5 L11 15.5 L16 9.5"/></svg></span>
-      <h2>Thanks — you're on the list!</h2>
-      <p>We've received your details and will be in touch within one business day to talk about your territory.</p>
+      <h2>Thanks — we've got your details.</h2>
+      <p>We'll be in touch within one business day.</p>
       <button type="button" class="btn btn-outline-navy" id="modal-done">Done</button>
     </div>
   </div>

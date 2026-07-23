@@ -138,11 +138,33 @@
 
     if (!valid) return;
 
-    /* Placeholder submit — replace action with your form endpoint */
-    formView.hidden = true;
-    successView.hidden = false;
-    modalDone.focus();
-    contactForm.reset();
+    /* Deliver via FormSubmit.co with fetch so the modal never navigates away.
+       NOTE: FormSubmit requires a one-time activation — the FIRST submission
+       sends a confirmation email to hello@ascentmail.com.au whose link must be
+       clicked before deliveries start. Upgrade path: swap the form's action URL
+       for an n8n webhook to also log leads into Airtable. */
+    var submitBtn = contactForm.querySelector('button[type="submit"]');
+    var formError = document.getElementById("form-error");
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Sending…";
+    formError.hidden = true;
+
+    fetch(contactForm.action, {
+      method: "POST",
+      headers: { "Accept": "application/json" },
+      body: new FormData(contactForm)
+    }).then(function (res) {
+      if (!res.ok) throw new Error("FormSubmit responded " + res.status);
+      formView.hidden = true;
+      successView.hidden = false;
+      modalDone.focus();
+      contactForm.reset();
+    }).catch(function () {
+      formError.hidden = false;
+    }).then(function () {
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Request My Demo";
+    });
   });
 
   /* Rotating stats ticker (Why Ascent band) */
