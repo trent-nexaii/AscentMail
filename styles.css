@@ -356,13 +356,6 @@ section { padding: 72px 0; }
 .diff-foot strong { color: var(--navy); }
 .diff-foot .ch-icon { background: var(--white); color: var(--teal); box-shadow: var(--shadow); }
 
-.strategy-cta { margin-top: 32px; text-align: center; padding: 40px 32px; }
-.sc-icon { display: grid; place-items: center; width: 56px; height: 56px; border-radius: 50%; background: rgba(31, 169, 198, .12); color: var(--teal); margin: 0 auto 16px; }
-.sc-icon svg { width: 28px; height: 28px; }
-.strategy-cta h3 { font-size: 1.35rem; margin-bottom: 8px; }
-.sc-sub { color: var(--text-muted); margin-bottom: 20px; }
-.sc-micro { margin-top: 12px; font-size: .82rem; color: var(--text-muted); }
-
 @media (max-width: 900px) {
   .strategy-grid { grid-template-columns: 1fr; }
 }
@@ -473,6 +466,7 @@ section { padding: 72px 0; }
 .final-mini-icons li { display: flex; align-items: center; gap: 12px; font-size: .95rem; }
 .final-cta .feat-icon { background: rgba(255, 255, 255, .08); color: var(--white); }
 .final-mini-icons li:hover .feat-icon { color: var(--teal); }
+.final-micro { margin-top: 14px; font-size: .85rem; color: rgba(255, 255, 255, .65); }
 
 /* Footer */
 .site-footer { background: var(--navy-deep); color: rgba(255, 255, 255, .75); padding: 56px 0 0; }
