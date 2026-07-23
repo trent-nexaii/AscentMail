@@ -187,12 +187,12 @@ section { padding: 72px 0; }
 .mail-lines span:nth-child(2) { width: 80%; }
 .mail-lines span:nth-child(3) { width: 55%; }
 
-/* Industries — navy contrast strip */
-.industries { background: var(--navy); }
+/* Industries — navy contrast strip (compact: a strip, not a full section) */
+.industries { background: var(--navy); padding: 56px 0; }
 .industries .eyebrow { text-align: center; }
 .industries-line { color: var(--white); }
-.industries-line { text-align: center; font-size: clamp(1.15rem, 2.4vw, 1.5rem); margin-bottom: 32px; }
-.industries-row { display: flex; justify-content: center; gap: 34px; flex-wrap: nowrap; overflow-x: auto; padding-bottom: 8px; -webkit-overflow-scrolling: touch; }
+.industries-line { text-align: center; font-size: clamp(1.15rem, 2.4vw, 1.5rem); margin-bottom: 22px; }
+.industries-row { display: flex; justify-content: center; gap: 32px; flex-wrap: nowrap; overflow-x: auto; padding-bottom: 4px; -webkit-overflow-scrolling: touch; }
 .industries-row li { display: flex; flex-direction: column; align-items: center; gap: 8px; font-size: .85rem; font-weight: 500; color: rgba(255, 255, 255, .78); white-space: nowrap; flex-shrink: 0; }
 .ind-icon { display: grid; place-items: center; width: 46px; height: 46px; border-radius: 50%; background: var(--white); box-shadow: var(--shadow); color: var(--navy); }
 .industries-row li:hover .ind-icon { color: var(--teal); }
@@ -542,6 +542,7 @@ section { padding: 72px 0; }
 
 @media (max-width: 640px) {
   section { padding: 64px 0; }
+  .industries { padding: 40px 0; }
   .cta-row .btn { width: 100%; }
   .mini-features { grid-template-columns: 1fr; }
   .step-flow { flex-wrap: wrap; row-gap: 18px; justify-content: center; }
