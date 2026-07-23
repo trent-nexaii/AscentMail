@@ -367,16 +367,18 @@ section { padding: 72px 0; }
 
 /* Feature bar — the single teal-tint highlight band */
 .feature-bar { background: var(--band-ice); }
-.feature-bar .eyebrow { display: block; text-align: center; margin-bottom: 36px; }
-.feature-bar .feat-icon { background: var(--white); box-shadow: var(--shadow); }
-.feature-items { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
-.feature-items li { display: flex; align-items: flex-start; justify-content: center; gap: 12px; font-family: var(--font-head); color: var(--navy); font-size: .95rem; text-align: left; }
-.feature-items li strong { display: block; line-height: 1.35; padding-top: 11px; }
-.feature-items li > div { min-width: 0; }
+.rule-heading { display: flex; align-items: center; gap: 22px; margin-bottom: 44px; font-size: 1.05rem; letter-spacing: .14em; text-transform: uppercase; text-align: center; color: var(--navy); }
+.rh-rule { flex: 1; height: 1px; background: rgba(27, 58, 95, .18); }
+.feature-items { display: grid; grid-template-columns: repeat(4, 1fr); }
+.feature-items li { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 8px 24px; }
+.feature-items li + li { border-left: 1px solid rgba(27, 58, 95, .12); }
+.feature-bar .feat-icon { width: 60px; height: 60px; border-radius: 14px; background: var(--white); box-shadow: var(--shadow); margin-bottom: 14px; }
+.feature-bar .feat-icon svg { width: 28px; height: 28px; }
+.feature-items h3 { font-size: 1rem; margin-bottom: 6px; }
 .feat-icon { display: grid; place-items: center; flex-shrink: 0; width: 42px; height: 42px; border-radius: 10px; background: rgba(31, 169, 198, .12); color: var(--navy); }
 .feature-items li:hover .feat-icon { color: var(--teal); }
 .feat-icon svg { width: 22px; height: 22px; }
-.feat-sub { display: block; font-family: var(--font-body); font-weight: 400; font-size: .78rem; color: var(--text-muted); }
+.feat-sub { display: block; font-family: var(--font-body); font-weight: 400; font-size: .85rem; color: var(--text-muted); }
 
 /* Stats ticker (Why Ascent band) */
 .stat-ticker { margin-top: 40px; padding-top: 40px; border-top: 1px solid var(--border); text-align: center; }
@@ -506,7 +508,8 @@ section { padding: 72px 0; }
   .hero-visual { max-width: 640px; margin: 0 auto; width: 100%; }
   .hiw-grid, .timeline-grid, .territory-grid { grid-template-columns: 1fr; }
   .hiw-card { position: static; }
-  .feature-items { grid-template-columns: repeat(2, 1fr); }
+  .feature-items { grid-template-columns: repeat(2, 1fr); gap: 28px; }
+  .feature-items li + li { border-left: 0; }
   .industries-row { justify-content: flex-start; }
 }
 
@@ -551,7 +554,6 @@ section { padding: 72px 0; }
   .tl-day { width: 64px; font-size: .85rem; }
   .pricing-grid { grid-template-columns: 1fr; }
   .feature-items { grid-template-columns: 1fr; }
-  .feature-items li { justify-content: flex-start; }
   .territory-maps { grid-template-columns: 1fr; }
   .map-nz { max-width: 140px; margin: 0 auto; }
   .final-mini-icons { flex-direction: column; align-items: flex-start; width: fit-content; margin-left: auto; margin-right: auto; }
