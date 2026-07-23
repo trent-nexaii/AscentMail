@@ -241,13 +241,17 @@ section { padding: 72px 0; }
 .tl-day { width: 110px; flex-shrink: 0; text-align: right; font-family: var(--font-head); font-weight: 600; color: var(--navy); font-size: .95rem; }
 .tl-dot { position: relative; z-index: 1; width: 14px; height: 14px; flex-shrink: 0; border-radius: 50%; background: var(--teal); box-shadow: 0 0 0 4px rgba(31, 169, 198, .18); }
 .tl-late .tl-dot { background: var(--text-muted); box-shadow: 0 0 0 4px rgba(100, 116, 139, .15); }
+.tl-icon { display: grid; place-items: center; flex-shrink: 0; width: 44px; height: 44px; border-radius: 50%; background: rgba(31, 169, 198, .12); color: var(--teal); }
+.tl-icon svg { width: 22px; height: 22px; }
+.tl-late .tl-icon { background: rgba(100, 116, 139, .12); color: var(--text-muted); }
 .tl-label { font-weight: 500; }
 .tl-highlight .tl-label { color: var(--teal-dark); font-weight: 600; }
 .tl-late .tl-label { color: var(--text-muted); }
 .trophy-card { text-align: center; }
 .trophy-icon { display: grid; place-items: center; width: 56px; height: 56px; border-radius: 50%; background: rgba(31, 169, 198, .14); color: var(--teal); margin: 0 auto 16px; }
 .trophy-icon svg { width: 28px; height: 28px; }
-.trophy-lead { font-family: var(--font-head); font-weight: 600; color: var(--navy); font-size: 1.1rem; margin-bottom: 12px; }
+.trophy-lead { font-family: var(--font-head); font-weight: 600; color: var(--navy); font-size: 1.1rem; line-height: 1.55; }
+.trophy-rule { display: block; width: 36px; height: 3px; border-radius: 2px; background: var(--teal); margin: 14px auto; }
 .trophy-sub { color: var(--text-muted); font-style: italic; }
 
 /* Territories (dark) */
