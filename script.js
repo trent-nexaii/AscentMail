@@ -60,67 +60,129 @@
     checkerResult.textContent = "Good news — territories in " + location + " are still open for " + industry + ". Book a demo to claim yours.";
   });
 
-  /* Contact modal */
-  var modal = document.getElementById("contact-modal");
-  var modalClose = document.getElementById("modal-close");
-  var modalDone = document.getElementById("modal-done");
-  var formView = document.getElementById("modal-form-view");
-  var successView = document.getElementById("modal-success-view");
-  var contactForm = document.getElementById("contact-form");
-  var lastFocused = null;
+  /* Modals — Book a Demo + Send Us a Message share this module */
+  function setupModal(config) {
+    var overlay = document.getElementById(config.overlayId);
+    if (!overlay) return null;
+    var formView = document.getElementById(config.formViewId);
+    var successView = document.getElementById(config.successViewId);
+    var doneBtn = document.getElementById(config.doneId);
+    var closeBtn = overlay.querySelector(".modal-close");
+    var lastFocused = null;
 
-  function openModal() {
-    lastFocused = document.activeElement;
-    modal.hidden = false;
-    formView.hidden = false;
-    successView.hidden = true;
-    document.body.style.overflow = "hidden";
-    document.getElementById("cf-name").focus();
-  }
-  function closeModal() {
-    modal.hidden = true;
-    document.body.style.overflow = "";
-    if (lastFocused) lastFocused.focus();
-  }
-
-  document.querySelectorAll(".js-open-modal").forEach(function (btn) {
-    btn.addEventListener("click", openModal);
-  });
-  modalClose.addEventListener("click", closeModal);
-  modalDone.addEventListener("click", closeModal);
-  modal.addEventListener("click", function (e) {
-    if (e.target === modal) closeModal();
-  });
-  document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape" && !modal.hidden) closeModal();
-  });
-
-  /* Focus trap inside modal */
-  modal.addEventListener("keydown", function (e) {
-    if (e.key !== "Tab") return;
-    var focusables = modal.querySelectorAll("button, input, select, a[href]");
-    var visible = Array.prototype.filter.call(focusables, function (el) {
-      return el.offsetParent !== null;
-    });
-    if (!visible.length) return;
-    var first = visible[0];
-    var last = visible[visible.length - 1];
-    if (e.shiftKey && document.activeElement === first) {
-      e.preventDefault();
-      last.focus();
-    } else if (!e.shiftKey && document.activeElement === last) {
-      e.preventDefault();
-      first.focus();
+    function open() {
+      lastFocused = document.activeElement;
+      overlay.hidden = false;
+      formView.hidden = false;
+      successView.hidden = true;
+      document.body.style.overflow = "hidden";
+      var first = document.getElementById(config.firstFieldId);
+      if (first) first.focus();
     }
+    function close() {
+      overlay.hidden = true;
+      document.body.style.overflow = "";
+      if (lastFocused) lastFocused.focus();
+    }
+    function showSuccess() {
+      formView.hidden = true;
+      successView.hidden = false;
+      doneBtn.focus();
+    }
+
+    document.querySelectorAll(config.openSelector).forEach(function (btn) {
+      btn.addEventListener("click", open);
+    });
+    closeBtn.addEventListener("click", close);
+    doneBtn.addEventListener("click", close);
+    overlay.addEventListener("click", function (e) {
+      if (e.target === overlay) close();
+    });
+
+    /* Focus trap inside modal */
+    overlay.addEventListener("keydown", function (e) {
+      if (e.key !== "Tab") return;
+      var focusables = overlay.querySelectorAll("button, input, select, textarea, a[href]");
+      var visible = Array.prototype.filter.call(focusables, function (el) {
+        return el.offsetParent !== null;
+      });
+      if (!visible.length) return;
+      var first = visible[0];
+      var last = visible[visible.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    });
+
+    return { overlay: overlay, open: open, close: close, showSuccess: showSuccess };
+  }
+
+  var demoModal = setupModal({
+    overlayId: "contact-modal",
+    openSelector: ".js-open-modal",
+    formViewId: "modal-form-view",
+    successViewId: "modal-success-view",
+    doneId: "modal-done",
+    firstFieldId: "cf-name"
+  });
+  var messageModal = setupModal({
+    overlayId: "message-modal",
+    openSelector: ".js-open-message-modal",
+    formViewId: "message-form-view",
+    successViewId: "message-success-view",
+    doneId: "message-done",
+    firstFieldId: "mf-name"
   });
 
-  /* Contact form validation */
+  document.addEventListener("keydown", function (e) {
+    if (e.key !== "Escape") return;
+    [demoModal, messageModal].forEach(function (m) {
+      if (m && !m.overlay.hidden) m.close();
+    });
+  });
+
+  /* Form validation */
   function setError(input, message) {
     var errorEl = input.closest(".field").querySelector(".field-error");
     input.setAttribute("aria-invalid", message ? "true" : "false");
     if (errorEl) errorEl.textContent = message || "";
   }
+  var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  var PHONE_RE = /^[\d\s+()-]{6,}$/;
 
+  /* Deliver via FormSubmit.co with fetch so the modal never navigates away.
+     NOTE: FormSubmit requires a one-time activation — the FIRST submission
+     sends a confirmation email to hello@ascentmail.com.au whose link must be
+     clicked before deliveries start. Upgrade path: swap the form's action URL
+     for an n8n webhook to also log leads into Airtable. */
+  function submitViaFormSubmit(form, errorId, idleLabel, onSuccess) {
+    var submitBtn = form.querySelector('button[type="submit"]');
+    var formError = document.getElementById(errorId);
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Sending…";
+    formError.hidden = true;
+
+    fetch(form.action, {
+      method: "POST",
+      headers: { "Accept": "application/json" },
+      body: new FormData(form)
+    }).then(function (res) {
+      if (!res.ok) throw new Error("FormSubmit responded " + res.status);
+      onSuccess();
+      form.reset();
+    }).catch(function () {
+      formError.hidden = false;
+    }).then(function () {
+      submitBtn.disabled = false;
+      submitBtn.textContent = idleLabel;
+    });
+  }
+
+  var contactForm = document.getElementById("contact-form");
   contactForm.addEventListener("submit", function (e) {
     e.preventDefault();
     var valid = true;
@@ -131,40 +193,31 @@
     var suburb = document.getElementById("cf-suburb");
 
     if (!name.value.trim()) { setError(name, "Please enter your name."); valid = false; } else setError(name, "");
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) { setError(email, "Please enter a valid email address."); valid = false; } else setError(email, "");
-    if (!/^[\d\s+()-]{6,}$/.test(phone.value.trim())) { setError(phone, "Please enter a valid phone number."); valid = false; } else setError(phone, "");
+    if (!EMAIL_RE.test(email.value.trim())) { setError(email, "Please enter a valid email address."); valid = false; } else setError(email, "");
+    if (!PHONE_RE.test(phone.value.trim())) { setError(phone, "Please enter a valid phone number."); valid = false; } else setError(phone, "");
     if (!industry.value) { setError(industry, "Please select your industry."); valid = false; } else setError(industry, "");
     if (!suburb.value.trim()) { setError(suburb, "Please enter a suburb or territory."); valid = false; } else setError(suburb, "");
 
     if (!valid) return;
+    submitViaFormSubmit(contactForm, "form-error", "Request My Demo", demoModal.showSuccess);
+  });
 
-    /* Deliver via FormSubmit.co with fetch so the modal never navigates away.
-       NOTE: FormSubmit requires a one-time activation — the FIRST submission
-       sends a confirmation email to hello@ascentmail.com.au whose link must be
-       clicked before deliveries start. Upgrade path: swap the form's action URL
-       for an n8n webhook to also log leads into Airtable. */
-    var submitBtn = contactForm.querySelector('button[type="submit"]');
-    var formError = document.getElementById("form-error");
-    submitBtn.disabled = true;
-    submitBtn.textContent = "Sending…";
-    formError.hidden = true;
+  var messageForm = document.getElementById("message-form");
+  messageForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var valid = true;
+    var name = document.getElementById("mf-name");
+    var phone = document.getElementById("mf-phone");
+    var email = document.getElementById("mf-email");
+    var message = document.getElementById("mf-message");
 
-    fetch(contactForm.action, {
-      method: "POST",
-      headers: { "Accept": "application/json" },
-      body: new FormData(contactForm)
-    }).then(function (res) {
-      if (!res.ok) throw new Error("FormSubmit responded " + res.status);
-      formView.hidden = true;
-      successView.hidden = false;
-      modalDone.focus();
-      contactForm.reset();
-    }).catch(function () {
-      formError.hidden = false;
-    }).then(function () {
-      submitBtn.disabled = false;
-      submitBtn.textContent = "Request My Demo";
-    });
+    if (!name.value.trim()) { setError(name, "Please enter your name."); valid = false; } else setError(name, "");
+    if (!PHONE_RE.test(phone.value.trim())) { setError(phone, "Please enter a valid phone number."); valid = false; } else setError(phone, "");
+    if (!EMAIL_RE.test(email.value.trim())) { setError(email, "Please enter a valid email address."); valid = false; } else setError(email, "");
+    if (!message.value.trim()) { setError(message, "Please enter your message."); valid = false; } else setError(message, "");
+
+    if (!valid) return;
+    submitViaFormSubmit(messageForm, "message-form-error", "Send Message", messageModal.showSuccess);
   });
 
   /* Rotating stats ticker (Why Ascent band) */

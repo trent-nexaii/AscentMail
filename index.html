@@ -18,7 +18,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cg stroke='%231B3A5F' stroke-width='7'%3E%3Cpath d='M46 96 H27 V51 L59.5 20 L73 32.5'/%3E%3Cpath d='M92 57 V96 H72.5'/%3E%3Cpath d='M50.5 95 A13.5 13.5 0 1 1 68.5 95'/%3E%3C/g%3E%3Cpath d='M69 63 L88 44' stroke='%231FA9C6' stroke-width='7'/%3E%3Cpath d='M100 32 L94.7 47.9 L84.1 37.3 Z' fill='%231FA9C6'/%3E%3Cg stroke='%231FA9C6'%3E%3Ccircle cx='59.5' cy='85' r='5.2' stroke-width='4.2'/%3E%3Cpath d='M61.5 83 L57.5 87' stroke-width='3.2'/%3E%3Cpath d='M49 94.5 L54.5 89' stroke-width='3.2'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&family=Caveat:wght@600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <script type="application/ld+json">
 {
@@ -30,7 +30,12 @@
       "url": "https://ascentmail.com.au/",
       "slogan": "Property Intelligence. Delivered.",
       "description": "Automated direct mail powered by real-time property intelligence for local service businesses across Australia and New Zealand.",
-      "areaServed": ["AU", "NZ"]
+      "areaServed": ["AU", "NZ"],
+      "email": "hello@ascentmail.com.au",
+      "contactPoint": [
+        { "@type": "ContactPoint", "contactType": "customer service", "email": "hello@ascentmail.com.au", "telephone": "+61 42 202 9228", "areaServed": "AU" },
+        { "@type": "ContactPoint", "contactType": "customer service", "email": "hello@ascentmail.com.au", "telephone": "+64 27 276 2351", "areaServed": "NZ" }
+      ]
     },
     {
       "@type": "Service",
@@ -190,7 +195,7 @@
 <section class="philosophy" aria-labelledby="philosophy-heading">
   <div class="container reveal">
     <p class="eyebrow">Our philosophy</p>
-    <h2 id="philosophy-heading">The <span class="teal">Right Message.</span><br>To the <span class="teal">Right Homeowner,</span><br>at the <span class="teal">Right Time.</span></h2>
+    <h2 id="philosophy-heading">The <span class="teal">Right Message.</span><br>To the <span class="teal">Right Homeowner.</span><br>At the <span class="teal">Right Time.</span></h2>
     <p class="philosophy-intro"><strong>Marketing works best when relevance meets timing.</strong>That's why Ascent Mail combines property intelligence, automation and personalised direct mail to connect your business with homeowners at exactly the right moment when they're most likely to need your service.</p>
     <hr class="philosophy-divider" aria-hidden="true">
     <div class="mini-features">
@@ -220,8 +225,8 @@
 <section class="how-it-works" id="how-it-works" aria-labelledby="hiw-heading">
   <div class="container">
     <div class="section-head reveal">
-      <p class="eyebrow">The process</p>
-      <h2 id="hiw-heading">How <span class="teal">Ascent Mail</span> Works</h2>
+      <p class="eyebrow">How Ascent Mail Works</p>
+      <h2 id="hiw-heading">It's <span class="teal">Simple.</span> It's <span class="teal">Automatic.</span> It <span class="teal">Just Works.</span></h2>
     </div>
     <div class="hiw-grid">
       <ol class="hiw-steps reveal">
@@ -247,14 +252,22 @@
         </li>
       </ol>
       <aside class="hiw-card card reveal" aria-label="What you get with Ascent Mail">
-        <h3>Everything handled for you</h3>
-        <ul class="check-list">
-          <li><span class="tick" aria-hidden="true">✓</span> 100% Automated</li>
-          <li><span class="tick" aria-hidden="true">✓</span> Real-time Property Intelligence</li>
-          <li><span class="tick" aria-hidden="true">✓</span> Personalised Direct Mail</li>
-          <li><span class="tick" aria-hidden="true">✓</span> More Jobs. More Revenue.</li>
+        <h3>You Focus On Your Business</h3>
+        <p class="hiw-card-sub">We'll take care of everything else.</p>
+        <ul class="check-list check-list-divided">
+          <li><span class="tick" aria-hidden="true">✓</span> Real-time property monitoring</li>
+          <li><span class="tick" aria-hidden="true">✓</span> Personalised letters</li>
+          <li><span class="tick" aria-hidden="true">✓</span> Automatic printing &amp; postage</li>
+          <li><span class="tick" aria-hidden="true">✓</span> Perfectly timed delivery</li>
         </ul>
-        <a href="#territories" class="btn btn-teal">Claim Your Territory →</a>
+        <div class="hiw-subcard">
+          <span class="hiw-subcard-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 L5 13 H11 L10 22 L19 10 H13 Z"/></svg></span>
+          <div>
+            <p class="hiw-subcard-title">Completely Hands-Off</p>
+            <p class="hiw-subcard-text">From monitoring property events to printing and posting every letter, the entire process runs automatically.</p>
+          </div>
+        </div>
+        <a href="#territories" class="btn btn-teal btn-block">Claim Your Territory →</a>
       </aside>
     </div>
   </div>
@@ -266,7 +279,8 @@
     <div class="section-head reveal">
       <p class="eyebrow">Why timing wins</p>
       <h2 id="advantage-heading">The Ascent <span class="teal">Advantage</span></h2>
-      <p class="section-sub">Property events create demand. <span class="teal-strong">Great timing wins more business.</span></p>
+      <p class="advantage-sub">Property events create demand. <span class="teal">Great timing wins more business.</span></p>
+      <p class="advantage-tagline">See how Ascent Mail helps your business reach homeowners before the competition.</p>
     </div>
     <div class="timeline-grid">
       <ol class="timeline reveal" aria-label="Timeline from property event to your letter arriving">
@@ -281,6 +295,61 @@
         <span class="trophy-rule" aria-hidden="true"></span>
         <p class="trophy-sub">"Timing isn't everything. It's the only thing."</p>
       </aside>
+    </div>
+  </div>
+</section>
+
+<!-- A BETTER FIRST IMPRESSION -->
+<section class="first-impression" id="first-impression" aria-labelledby="fi-heading">
+  <div class="container">
+    <div class="fi-grid">
+      <div class="fi-copy reveal">
+        <span class="fi-house-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11 L12 4 L20 11"/><path d="M6 10 V20 H18 V10"/><path d="M10 20 V14 H14 V20"/></svg></span>
+        <h2 id="fi-heading">A Better First Impression</h2>
+        <p class="fi-sub">Helping local businesses make meaningful first impressions at life's biggest moments.</p>
+        <div class="fi-body">
+          <p>Every property event marks the beginning of a new chapter.</p>
+          <p>For homeowners, it's an exciting and often overwhelming time.</p>
+          <p>For local businesses, it's a rare opportunity to introduce themselves in a genuine, helpful and memorable way.</p>
+          <p>At Ascent Mail, we believe great marketing isn't about shouting the loudest.</p>
+          <p>It's about showing up at exactly the right moment with exactly the right message.</p>
+        </div>
+        <blockquote class="fi-quote">
+          <p>We don't just send letters. We help local businesses become the first trusted name homeowners remember.</p>
+        </blockquote>
+      </div>
+      <div class="fi-visual reveal">
+        <p class="fi-script-label">See What Arrives In Their Letterbox <span aria-hidden="true">→</span></p>
+        <!-- PLACEHOLDER letter cards: CSS mockups only — swap this .letter-fan block
+             for real letter images when the final letter artwork is available. -->
+        <div class="letter-fan" role="img" aria-label="Four sample Ascent Mail letters: Welcome Home, Fresh Start, Congratulations On Your Sale and Welcome to the Neighbourhood">
+          <article class="letter-card" aria-hidden="true">
+            <p class="letter-head lh-teal"><span class="letter-head-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11 L12 4 L20 11"/><path d="M6 10 V20 H18 V10"/><path d="M10 20 V14 H14 V20"/></svg></span>Welcome Home</p>
+            <div class="letter-lines"><span></span><span></span><span></span><span></span></div>
+            <p class="letter-sign">Your local team</p>
+            <div class="letter-foot"><span class="letter-qr"></span></div>
+          </article>
+          <article class="letter-card" aria-hidden="true">
+            <p class="letter-head lh-navy"><span class="letter-head-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.5"/><path d="M12 3 V5.5"/><path d="M12 18.5 V21"/><path d="M3 12 H5.5"/><path d="M18.5 12 H21"/><path d="M5.6 5.6 L7.4 7.4"/><path d="M16.6 16.6 L18.4 18.4"/><path d="M5.6 18.4 L7.4 16.6"/><path d="M16.6 7.4 L18.4 5.6"/></svg></span>Fresh Start</p>
+            <div class="letter-lines"><span></span><span></span><span></span><span></span></div>
+            <p class="letter-sign">Here to help</p>
+            <div class="letter-foot"><span class="letter-qr"></span></div>
+          </article>
+          <article class="letter-card" aria-hidden="true">
+            <p class="letter-head lh-gold"><span class="letter-head-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21 H16"/><path d="M12 17 V21"/><path d="M7 4 H17 V9 A5 5 0 0 1 7 9 Z"/><path d="M7 5 H4 V7 A3 3 0 0 0 7 9"/><path d="M17 5 H20 V7 A3 3 0 0 1 17 9"/></svg></span>Congratulations On Your Sale</p>
+            <div class="letter-lines"><span></span><span></span><span></span><span></span></div>
+            <p class="letter-sign">Warm regards</p>
+            <div class="letter-foot"><span class="letter-qr"></span></div>
+          </article>
+          <article class="letter-card" aria-hidden="true">
+            <p class="letter-head lh-teal-dark"><span class="letter-head-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21 C12 21 5 14.5 5 9.5 A7 7 0 0 1 19 9.5 C19 14.5 12 21 12 21 Z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>Welcome to the Neighbourhood</p>
+            <div class="letter-lines"><span></span><span></span><span></span><span></span></div>
+            <p class="letter-sign">See you soon</p>
+            <div class="letter-foot"><span class="letter-qr"></span></div>
+          </article>
+        </div>
+        <a href="#" class="btn btn-outline-navy fi-samples-btn"><span aria-hidden="true">✉</span> View Sample Letters →</a>
+      </div>
     </div>
   </div>
 </section>
@@ -744,10 +813,50 @@
   </div>
 </section>
 
+<!-- CONTACT -->
+<section class="contact" id="contact" aria-labelledby="contact-heading">
+  <div class="container">
+    <div class="contact-card card reveal">
+      <div class="contact-intro">
+        <span class="contact-bubble-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5 A8.5 8 0 0 1 12.5 19.5 H4 L6.2 16.4 A8 8 0 1 1 21 11.5 Z"/><path d="M8.5 10 H15.5"/><path d="M8.5 13 H13"/></svg></span>
+        <h3 id="contact-heading">Questions? We're Here to Help.</h3>
+        <p class="contact-body">Whether you're ready to claim your territory or simply have a question, we'd love to hear from you.</p>
+        <hr class="contact-divider" aria-hidden="true">
+        <p class="contact-muted">No pressure. Just a friendly conversation about growing your business.</p>
+      </div>
+      <ul class="contact-cols">
+        <li>
+          <span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 8 L12 14 L21 8"/></svg></span>
+          <h4>Email</h4>
+          <p><a href="mailto:hello@ascentmail.com.au">hello@ascentmail.com.au</a></p>
+          <p class="contact-subline">We'll respond as soon as possible.</p>
+        </li>
+        <li>
+          <span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4 H9 L11 9 L8.5 10.5 A11 11 0 0 0 13.5 15.5 L15 13 L20 15 V19 A2 2 0 0 1 18 21 A16 16 0 0 1 3 6 A2 2 0 0 1 5 4 Z"/></svg></span>
+          <h4>Phone</h4>
+          <p><a href="tel:+61422029228">+61 42 202 9228 AU</a></p>
+          <p><a href="tel:+64272762351">+64 27 276 2351 NZ</a></p>
+          <p class="contact-subline">Mon – Fri 9:00am – 5:00pm AEST</p>
+        </li>
+        <li>
+          <span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21 C12 21 5 14.5 5 9.5 A7 7 0 0 1 19 9.5 C19 14.5 12 21 12 21 Z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>
+          <h4>Location</h4>
+          <p>Australia — Sunshine Coast, QLD</p>
+          <p>New Zealand — Wellington</p>
+        </li>
+      </ul>
+      <div class="contact-actions">
+        <button type="button" class="btn btn-teal js-open-modal">Book a Demo →</button>
+        <button type="button" class="btn btn-outline-navy js-open-message-modal">Send Us a Message →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
 </main>
 
 <footer class="site-footer">
-  <div class="container footer-inner">
+  <div class="container footer-grid">
     <div class="footer-brand">
       <a href="#top" class="logo logo-light" aria-label="Ascent Mail — back to top">
         <svg class="logo-mark" viewBox="0 0 120 120" fill="none" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Ascent Mail logo: house with rising arrow and property gauge">
@@ -767,16 +876,37 @@
         </svg>
         <span class="wordmark"><span class="wm-ascent light">ASCENT</span> <span class="wm-mail">MAIL</span></span>
       </a>
-      <p>The Right Message. The Right Homeowner. At the Right Time.</p>
-      <p class="footer-region">Australia &amp; New Zealand <span aria-hidden="true">🇦🇺 🇳🇿</span></p>
+      <p class="footer-tagline">The Right Message. The Right Homeowner. At the Right Time.</p>
+      <hr class="footer-divider" aria-hidden="true">
+      <p class="footer-desc">Helping local businesses across Australia and New Zealand make meaningful first impressions at exactly the right time.</p>
     </div>
-    <nav class="footer-nav" aria-label="Footer navigation">
-      <a href="#how-it-works">How It Works</a>
-      <a href="#territories">Territories</a>
-      <a href="#industries">Industries</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#faq">FAQ</a>
+    <nav class="footer-col" aria-label="Footer navigation">
+      <h3 class="footer-heading">Explore</h3>
+      <ul>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#territories">Territories</a></li>
+        <li><a href="#industries">Industries</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
     </nav>
+    <div class="footer-col footer-contact-col">
+      <h3 class="footer-heading">Contact</h3>
+      <ul>
+        <li><span class="footer-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 8 L12 14 L21 8"/></svg></span><a href="mailto:hello@ascentmail.com.au">hello@ascentmail.com.au</a></li>
+        <li><span class="footer-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4 H9 L11 9 L8.5 10.5 A11 11 0 0 0 13.5 15.5 L15 13 L20 15 V19 A2 2 0 0 1 18 21 A16 16 0 0 1 3 6 A2 2 0 0 1 5 4 Z"/></svg></span><a href="tel:+61422029228">+61 42 202 9228 AU</a></li>
+        <li><span class="footer-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4 H9 L11 9 L8.5 10.5 A11 11 0 0 0 13.5 15.5 L15 13 L20 15 V19 A2 2 0 0 1 18 21 A16 16 0 0 1 3 6 A2 2 0 0 1 5 4 Z"/></svg></span><a href="tel:+64272762351">+64 27 276 2351 NZ</a></li>
+        <li><span class="footer-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21 C12 21 5 14.5 5 9.5 A7 7 0 0 1 19 9.5 C19 14.5 12 21 12 21 Z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>Australia — Sunshine Coast, QLD</li>
+        <li><span class="footer-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21 C12 21 5 14.5 5 9.5 A7 7 0 0 1 19 9.5 C19 14.5 12 21 12 21 Z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>New Zealand — Wellington</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3 class="footer-heading">Legal</h3>
+      <ul>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+      </ul>
+    </div>
   </div>
   <div class="container footer-bottom">
     <p>© 2026 Ascent Mail. All rights reserved.</p>
@@ -846,6 +976,61 @@
       <h2>Thanks — we've got your details.</h2>
       <p>We'll be in touch within one business day.</p>
       <button type="button" class="btn btn-outline-navy" id="modal-done">Done</button>
+    </div>
+  </div>
+</div>
+
+<!-- MESSAGE MODAL -->
+<div class="modal-overlay" id="message-modal" role="dialog" aria-modal="true" aria-labelledby="message-modal-title" hidden>
+  <div class="modal card">
+    <button type="button" class="modal-close" id="message-modal-close" aria-label="Close dialog">×</button>
+    <div class="modal-body" id="message-form-view">
+      <h2 id="message-modal-title">Send Us a Message</h2>
+      <p class="modal-sub">Tell us how we can help and we'll get back to you as soon as possible.</p>
+      <form id="message-form" action="https://formsubmit.co/hello@ascentmail.com.au" method="POST" novalidate>
+        <input type="hidden" name="_subject" value="New Ascent Mail Contact Message">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <label class="honeypot" aria-hidden="true">Leave this field empty
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off">
+        </label>
+        <div class="field">
+          <label for="mf-name">Name</label>
+          <input type="text" id="mf-name" name="name" autocomplete="name" required>
+          <span class="field-error" aria-live="polite"></span>
+        </div>
+        <div class="field">
+          <label for="mf-phone">Phone</label>
+          <input type="tel" id="mf-phone" name="phone" autocomplete="tel" required>
+          <span class="field-error" aria-live="polite"></span>
+        </div>
+        <div class="field">
+          <label for="mf-email">Email</label>
+          <input type="email" id="mf-email" name="email" autocomplete="email" required>
+          <span class="field-error" aria-live="polite"></span>
+        </div>
+        <div class="field">
+          <label for="mf-message">Message</label>
+          <textarea id="mf-message" name="message" rows="4" required></textarea>
+          <span class="field-error" aria-live="polite"></span>
+        </div>
+        <fieldset class="field checkbox-field">
+          <legend>Preferred contact method</legend>
+          <div class="checkbox-row">
+            <label class="checkbox-option"><input type="checkbox" name="preferred_contact" value="Phone"> Phone</label>
+            <label class="checkbox-option"><input type="checkbox" name="preferred_contact" value="Email"> Email</label>
+            <label class="checkbox-option"><input type="checkbox" name="preferred_contact" value="Text"> Text</label>
+          </div>
+        </fieldset>
+        <button type="submit" class="btn btn-teal btn-block">Send Message</button>
+        <p class="form-error" id="message-form-error" role="alert" hidden>Something went wrong and your message wasn't sent. Please try again. <a href="mailto:hello@ascentmail.com.au">Or email us directly</a>.</p>
+      </form>
+    </div>
+    <div class="modal-body modal-success" id="message-success-view" hidden>
+      <span class="success-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12.5 L11 15.5 L16 9.5"/></svg></span>
+      <h2>Thanks — your message is on its way.</h2>
+      <p>We'll get back to you as soon as possible.</p>
+      <button type="button" class="btn btn-outline-navy" id="message-done">Done</button>
     </div>
   </div>
 </div>
