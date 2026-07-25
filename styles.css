@@ -324,7 +324,7 @@ section { padding: 60px 0; }
 .dot-reserved { fill: var(--gold); animation-delay: .8s; }
 .dot-claimed { fill: #4A90D9; animation-delay: 1.4s; }
 @keyframes pulse { 0%, 100% { opacity: .55; transform: scale(.85); } 50% { opacity: 1; transform: scale(1.15); } }
-.map-legend { grid-column: 1 / -1; display: flex; justify-content: center; gap: 26px; font-size: .85rem; color: rgba(255, 255, 255, .75); }
+.map-legend { grid-column: 1 / -1; display: flex; flex-wrap: wrap; justify-content: center; gap: 26px; font-size: .85rem; color: rgba(255, 255, 255, .75); }
 .map-legend li { display: flex; align-items: center; gap: 8px; }
 .legend-dot { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
 .legend-available { background: var(--teal); }
@@ -417,6 +417,50 @@ section { padding: 60px 0; }
 .diff-foot { display: flex; align-items: center; gap: 12px; margin-top: 20px; padding: 14px 18px; background: var(--band-ice); border-radius: 10px; font-size: .93rem; }
 .diff-foot strong { color: var(--navy); }
 .diff-foot .ch-icon { background: var(--white); color: var(--teal); box-shadow: var(--shadow); }
+
+/* "Why Ascent Mail is different" on mobile: the interleaved grid cells are
+   regrouped (display: contents + order) into two stacked cards — Ascent Mail
+   first, then Traditional Marketing — with the "vs" chip as a centred divider.
+   Desktop/tablet (≥768px) side-by-side layout is untouched. */
+@media (max-width: 767px) {
+  .diff-card { padding: 20px 16px; }
+  .diff-table { display: flex; flex-direction: column; gap: 8px; }
+  .diff-head, .diff-body, .diff-row { display: contents; }
+  .diff-head .diff-asc { order: 1; }
+  .diff-row .diff-asc { order: 2; }
+  .diff-vs { order: 3; }
+  .diff-head .diff-cell:not(.diff-asc) { order: 4; }
+  .diff-row .diff-cell:not(.diff-asc) { order: 5; }
+  .diff-vs {
+    position: static;
+    transform: none;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    height: auto;
+    border-radius: 0;
+    background: none;
+    border: 0;
+    box-shadow: none;
+    margin: 8px 0;
+  }
+  .diff-vs::before, .diff-vs::after { content: ""; flex: 1; height: 1px; background: var(--border); }
+  .diff-vs > span {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--white);
+    border: 1px solid rgba(27, 58, 95, .08);
+    box-shadow: var(--shadow);
+  }
+  .diff-row .diff-cell { padding: 13px 16px; }
+  .diff-row .diff-cell .tick, .diff-row .diff-cell .cross { margin-right: 10px; }
+  .diff-foot { align-items: flex-start; }
+}
 
 @media (max-width: 900px) {
   .strategy-grid { grid-template-columns: 1fr; }
@@ -636,10 +680,6 @@ section { padding: 60px 0; }
   .step-flow > li:not(.flow-arrow) { flex: 0 0 30%; }
   .flow-arrow { display: none; }
   .mail-stack { width: min(320px, calc(100% - 16px)); }
-  .diff-head { display: none; }
-  .diff-vs { display: none; }
-  .diff-row { grid-template-columns: 1fr; gap: 6px; }
-  .diff-body { gap: 14px; }
   .channel-head { display: none; }
   .channel-row { grid-template-columns: 1fr; gap: 8px; }
   .ch-arrow { display: none; }
