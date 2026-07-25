@@ -333,12 +333,6 @@ section { padding: 60px 0; }
 
 .territory-side { display: flex; flex-direction: column; gap: 28px; }
 .territory-benefits { display: flex; flex-direction: column; gap: 12px; font-weight: 500; color: var(--white); }
-.territory-checker { background: rgba(255, 255, 255, .06); border: 1px solid rgba(255, 255, 255, .12); box-shadow: none; }
-.territory-checker h3 { margin-bottom: 18px; color: var(--white); }
-.territory-checker .field label { color: rgba(255, 255, 255, .85); }
-.territory-checker .checker-result { background: rgba(31, 169, 198, .18); color: var(--white); }
-.territory-checker .btn { margin-top: 4px; }
-.territory-side > .btn-outline-light { align-self: flex-start; }
 
 .field { margin-bottom: 16px; }
 .field label { display: block; font-weight: 500; font-size: .88rem; color: var(--navy); margin-bottom: 6px; }
@@ -356,13 +350,13 @@ section { padding: 60px 0; }
 .field textarea { resize: vertical; min-height: 96px; }
 .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--teal); box-shadow: 0 0 0 3px rgba(31, 169, 198, .18); }
 .field input[aria-invalid="true"], .field select[aria-invalid="true"], .field textarea[aria-invalid="true"] { border-color: #C0392B; }
+.field[hidden] { display: none; }
 .checkbox-field { border: 0; }
 .checkbox-field legend { font-weight: 500; font-size: .88rem; color: var(--navy); margin-bottom: 8px; padding: 0; }
 .checkbox-row { display: flex; flex-wrap: wrap; gap: 10px 22px; }
 .checkbox-option { display: flex; align-items: center; gap: 8px; font-size: .93rem; color: var(--text); cursor: pointer; }
 .checkbox-option input { width: 16px; height: 16px; accent-color: var(--teal); cursor: pointer; }
 .field-error { display: block; color: #C0392B; font-size: .8rem; margin-top: 4px; min-height: 0; }
-.checker-result { margin-top: 16px; background: rgba(31, 169, 198, .1); border-left: 3px solid var(--teal); border-radius: 6px; padding: 12px 14px; font-size: .92rem; color: var(--navy); }
 
 /* Complete your marketing strategy */
 .strategy { background: var(--band-mist); }
@@ -775,8 +769,9 @@ h2 { letter-spacing: -.01em; }
 .map-legend { gap: 18px; }
 .map-legend li { background: rgba(255, 255, 255, .06); border: 1px solid rgba(255, 255, 255, .08); border-radius: 999px; padding: 5px 14px; }
 
-/* Territory benefits as icon rows */
-.territory-benefits { gap: 14px; }
+/* Territory benefits as icon rows — 24px gap balances the column against
+   the map card's height now the checker widget is gone */
+.territory-benefits { gap: 24px; }
 .territory-benefits li { display: flex; align-items: center; gap: 14px; background: rgba(255, 255, 255, .06); border: 1px solid rgba(255, 255, 255, .12); border-radius: 10px; padding: 13px 16px; }
 .tb-icon { display: grid; place-items: center; flex-shrink: 0; width: 38px; height: 38px; border-radius: 9px; background: rgba(255, 255, 255, .08); color: var(--white); transition: color .2s ease; }
 .territory-benefits li:hover .tb-icon { color: var(--teal); }

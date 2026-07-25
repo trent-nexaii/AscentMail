@@ -44,22 +44,6 @@
     });
   });
 
-  /* Territory checker */
-  var checker = document.getElementById("territory-checker");
-  var checkerResult = document.getElementById("checker-result");
-  checker.addEventListener("submit", function (e) {
-    e.preventDefault();
-    var location = document.getElementById("tc-location").value.trim();
-    var industry = document.getElementById("tc-industry").value;
-    if (!location || !industry) {
-      checkerResult.hidden = false;
-      checkerResult.textContent = "Please enter a suburb or postcode and choose your industry.";
-      return;
-    }
-    checkerResult.hidden = false;
-    checkerResult.textContent = "Good news — territories in " + location + " are still open for " + industry + ". Book a demo to claim yours.";
-  });
-
   /* Modals — Book a Demo + Send Us a Message share this module */
   function setupModal(config) {
     var overlay = document.getElementById(config.overlayId);
@@ -90,9 +74,11 @@
       doneBtn.focus();
     }
 
-    document.querySelectorAll(config.openSelector).forEach(function (btn) {
-      btn.addEventListener("click", open);
-    });
+    if (config.openSelector) {
+      document.querySelectorAll(config.openSelector).forEach(function (btn) {
+        btn.addEventListener("click", open);
+      });
+    }
     closeBtn.addEventListener("click", close);
     doneBtn.addEventListener("click", close);
     overlay.addEventListener("click", function (e) {
@@ -131,11 +117,54 @@
   });
   var messageModal = setupModal({
     overlayId: "message-modal",
-    openSelector: ".js-open-message-modal",
     formViewId: "message-form-view",
     successViewId: "message-success-view",
     doneId: "message-done",
     firstFieldId: "mf-name"
+  });
+
+  /* The message modal serves two variants: the contact band's
+     "Send Us a Message" and the territory section's "Email Us" enquiry. */
+  var MESSAGE_VARIANTS = {
+    contact: {
+      title: "Send Us a Message",
+      subline: "Tell us how we can help and we'll get back to you as soon as possible.",
+      subject: "New Ascent Mail Contact Message",
+      phoneRequired: true,
+      showSuburb: false,
+      showPreferred: true,
+      successTitle: "Thanks — your message is on its way.",
+      successText: "We'll get back to you as soon as possible."
+    },
+    territory: {
+      title: "Email Us",
+      subline: "Ask us anything about territories, pricing or getting started — we'll be in touch within one business day.",
+      subject: "Territory Enquiry — Ascent Mail",
+      phoneRequired: false,
+      showSuburb: true,
+      showPreferred: false,
+      successTitle: "Thanks — we've got your message.",
+      successText: "We'll be in touch within one business day."
+    }
+  };
+  var messageVariant = MESSAGE_VARIANTS.contact;
+
+  function openMessageModal(name) {
+    messageVariant = MESSAGE_VARIANTS[name];
+    document.getElementById("message-modal-title").textContent = messageVariant.title;
+    document.getElementById("message-modal-sub").textContent = messageVariant.subline;
+    messageForm.querySelector('input[name="_subject"]').value = messageVariant.subject;
+    document.getElementById("mf-suburb-field").hidden = !messageVariant.showSuburb;
+    document.getElementById("mf-preferred-field").hidden = !messageVariant.showPreferred;
+    document.getElementById("message-success-title").textContent = messageVariant.successTitle;
+    document.getElementById("message-success-text").textContent = messageVariant.successText;
+    messageModal.open();
+  }
+  document.querySelectorAll(".js-open-message-modal").forEach(function (btn) {
+    btn.addEventListener("click", function () { openMessageModal("contact"); });
+  });
+  document.querySelectorAll(".js-open-email-modal").forEach(function (btn) {
+    btn.addEventListener("click", function () { openMessageModal("territory"); });
   });
 
   document.addEventListener("keydown", function (e) {
@@ -211,8 +240,11 @@
     var email = document.getElementById("mf-email");
     var message = document.getElementById("mf-message");
 
+    var phoneValue = phone.value.trim();
     if (!name.value.trim()) { setError(name, "Please enter your name."); valid = false; } else setError(name, "");
-    if (!PHONE_RE.test(phone.value.trim())) { setError(phone, "Please enter a valid phone number."); valid = false; } else setError(phone, "");
+    /* Phone is required for the contact variant, optional (but still validated
+       when filled in) for the territory enquiry variant. */
+    if (messageVariant.phoneRequired ? !PHONE_RE.test(phoneValue) : (phoneValue && !PHONE_RE.test(phoneValue))) { setError(phone, "Please enter a valid phone number."); valid = false; } else setError(phone, "");
     if (!EMAIL_RE.test(email.value.trim())) { setError(email, "Please enter a valid email address."); valid = false; } else setError(email, "");
     if (!message.value.trim()) { setError(message, "Please enter your message."); valid = false; } else setError(message, "");
 

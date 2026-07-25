@@ -478,31 +478,7 @@
           <li><span class="tb-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></svg></span>More results with less competition</li>
           <li><span class="tb-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17 L9 11 L13 15 L21 7"/><path d="M15 7 H21 V13"/></svg></span>Long-term growth in your market</li>
         </ul>
-        <form class="territory-checker card" id="territory-checker" novalidate aria-label="Check territory availability">
-          <h3>Is your exclusive territory still available?</h3>
-          <div class="field">
-            <label for="tc-location">Suburb or postcode</label>
-            <input type="text" id="tc-location" name="location" placeholder="e.g. Parramatta or 2150" required>
-          </div>
-          <div class="field">
-            <label for="tc-industry">Your industry</label>
-            <select id="tc-industry" name="industry" required>
-              <option value="" selected disabled>Select your industry</option>
-              <option>Removalists</option>
-              <option>Carpet Cleaning</option>
-              <option>Cleaning</option>
-              <option>Painting</option>
-              <option>Locksmiths</option>
-              <option>Handyman</option>
-              <option>Lawns &amp; Gardens</option>
-              <option>Conveyancing</option>
-              <option>Other trade</option>
-            </select>
-          </div>
-          <button type="submit" class="btn btn-teal btn-block">Check Availability</button>
-          <p class="checker-result" id="checker-result" role="status" aria-live="polite" hidden></p>
-        </form>
-        <a href="#pricing" class="btn btn-outline-light btn-block">View Available Territories</a>
+        <button type="button" class="btn btn-outline-light btn-block js-open-email-modal">Email Us →</button>
       </div>
     </div>
   </div>
@@ -986,7 +962,7 @@
     <button type="button" class="modal-close" id="message-modal-close" aria-label="Close dialog">×</button>
     <div class="modal-body" id="message-form-view">
       <h2 id="message-modal-title">Send Us a Message</h2>
-      <p class="modal-sub">Tell us how we can help and we'll get back to you as soon as possible.</p>
+      <p class="modal-sub" id="message-modal-sub">Tell us how we can help and we'll get back to you as soon as possible.</p>
       <form id="message-form" action="https://formsubmit.co/hello@ascentmail.com.au" method="POST" novalidate>
         <input type="hidden" name="_subject" value="New Ascent Mail Contact Message">
         <input type="hidden" name="_captcha" value="false">
@@ -1009,12 +985,17 @@
           <input type="email" id="mf-email" name="email" autocomplete="email" required>
           <span class="field-error" aria-live="polite"></span>
         </div>
+        <div class="field" id="mf-suburb-field" hidden>
+          <label for="mf-suburb">Suburb / territory of interest</label>
+          <input type="text" id="mf-suburb" name="suburb">
+          <span class="field-error" aria-live="polite"></span>
+        </div>
         <div class="field">
           <label for="mf-message">Message</label>
           <textarea id="mf-message" name="message" rows="4" required></textarea>
           <span class="field-error" aria-live="polite"></span>
         </div>
-        <fieldset class="field checkbox-field">
+        <fieldset class="field checkbox-field" id="mf-preferred-field">
           <legend>Preferred contact method</legend>
           <div class="checkbox-row">
             <label class="checkbox-option"><input type="checkbox" name="preferred_contact" value="Phone"> Phone</label>
@@ -1028,8 +1009,8 @@
     </div>
     <div class="modal-body modal-success" id="message-success-view" hidden>
       <span class="success-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12.5 L11 15.5 L16 9.5"/></svg></span>
-      <h2>Thanks — your message is on its way.</h2>
-      <p>We'll get back to you as soon as possible.</p>
+      <h2 id="message-success-title">Thanks — your message is on its way.</h2>
+      <p id="message-success-text">We'll get back to you as soon as possible.</p>
       <button type="button" class="btn btn-outline-navy" id="message-done">Done</button>
     </div>
   </div>
