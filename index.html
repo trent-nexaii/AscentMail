@@ -770,6 +770,41 @@
         <p class="target-body">While you're busy running your business, Ascent Mail keeps working in the background &mdash; helping you consistently reach homeowners at the moments that matter most.</p>
       </div>
     </div>
+    <div class="roi-calc card reveal" aria-labelledby="roi-heading">
+      <div class="roi-intro">
+        <span class="roi-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><rect x="8" y="6" width="8" height="3.5" rx="1"/><path d="M8.5 13.5 H8.51"/><path d="M12 13.5 H12.01"/><path d="M15.5 13.5 H15.51"/><path d="M8.5 17 H8.51"/><path d="M12 17 H12.01"/><path d="M15.5 17 H15.51"/></svg></span>
+        <div>
+          <h3 id="roi-heading">What could one new customer be worth?</h3>
+          <p class="roi-body">Every business is different, but even a handful of additional customers each year can make a significant difference.</p>
+        </div>
+      </div>
+      <div class="roi-main">
+        <div class="roi-fields">
+          <div class="roi-field">
+            <label for="roi-profit">Average profit per new customer <span class="roi-info" title="Roughly how much profit one new customer brings your business.">ⓘ</span></label>
+            <div class="roi-input">
+              <span class="roi-prefix" aria-hidden="true">$</span>
+              <input type="number" id="roi-profit" value="500" min="0" max="1000000" step="50" inputmode="numeric">
+            </div>
+          </div>
+          <span class="roi-op" aria-hidden="true">×</span>
+          <div class="roi-field">
+            <label for="roi-customers">Estimated additional customers per year <span class="roi-info" title="How many extra customers a year of well-timed letters could win you.">ⓘ</span></label>
+            <div class="roi-input">
+              <input type="number" id="roi-customers" value="12" min="0" max="10000" step="1" inputmode="numeric">
+            </div>
+          </div>
+          <span class="roi-op" aria-hidden="true">=</span>
+          <div class="roi-field roi-result-col">
+            <span class="roi-result-label" id="roi-result-label">Potential additional annual profit</span>
+            <output class="roi-result" id="roi-result" for="roi-profit roi-customers" aria-labelledby="roi-result-label" aria-live="polite">$6,000</output>
+            <p class="roi-monthly">That's approximately <strong class="teal"><span id="roi-monthly">$500</span> per month</strong> in additional profit.</p>
+          </div>
+        </div>
+        <p class="roi-private"><span class="roi-lock" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11 V8 A4 4 0 0 1 16 8 V11"/><path d="M12 15 V17"/></svg></span>Your numbers are private and never stored.</p>
+      </div>
+    </div>
+    <p class="roi-disclaimer reveal">These numbers are estimates only. Individual results will vary.</p>
   </div>
 </section>
 

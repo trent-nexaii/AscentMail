@@ -649,6 +649,42 @@ h2.feature-eyebrow { display: block; text-align: center; margin-bottom: 44px; co
   .target-graphic { width: 116px; margin: 0 auto; }
 }
 
+/* ROI calculator (Why Ascent band) */
+.roi-calc { display: grid; grid-template-columns: minmax(230px, 1fr) 2.1fr; gap: 36px; align-items: start; margin-top: 28px; padding: 32px 36px; }
+.roi-intro { display: flex; align-items: flex-start; gap: 16px; }
+.roi-icon { display: grid; place-items: center; flex-shrink: 0; width: 48px; height: 48px; border-radius: 12px; background: rgba(31, 169, 198, .12); color: var(--teal); }
+.roi-icon svg { width: 24px; height: 24px; stroke: currentColor; }
+.roi-intro h3 { font-size: 1.2rem; line-height: 1.3; margin-bottom: 10px; }
+.roi-body { color: var(--text-muted); font-size: .9rem; line-height: 1.6; }
+.roi-fields { display: grid; grid-template-columns: 1fr auto 1fr auto 1.2fr; gap: 16px; align-items: start; }
+.roi-field label, .roi-result-label { display: block; text-align: center; font-weight: 600; font-size: .78rem; line-height: 1.35; color: var(--text); min-height: 2.7em; margin-bottom: 8px; }
+.roi-info { cursor: help; color: var(--teal); font-weight: 400; }
+.roi-input { display: flex; align-items: center; background: var(--white); border: 1.5px solid #D5DEE8; border-radius: 8px; padding: 0 14px; transition: border-color .2s, box-shadow .2s; }
+.roi-input:focus-within { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(31, 169, 198, .18); }
+.roi-prefix { color: var(--text-muted); font-weight: 500; margin-right: 4px; }
+.roi-input input { width: 100%; border: 0; outline: none; background: none; padding: 11px 0; font-family: var(--font-body); font-weight: 600; font-size: 1rem; color: var(--navy); text-align: center; }
+.roi-input input::-webkit-outer-spin-button, .roi-input input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.roi-input input[type="number"] { -moz-appearance: textfield; appearance: textfield; }
+.roi-op { align-self: start; margin-top: 55px; font-family: var(--font-head); font-weight: 600; font-size: 1.15rem; color: var(--text-muted); }
+.roi-result { display: block; text-align: center; background: rgba(31, 169, 198, .12); border: 1.5px solid rgba(31, 169, 198, .45); border-radius: 8px; padding: 8px 14px; font-family: var(--font-head); font-weight: 700; font-size: 1.55rem; color: var(--navy); }
+.roi-monthly { margin-top: 10px; text-align: center; font-size: .84rem; line-height: 1.5; color: var(--text-muted); }
+.roi-monthly strong { font-weight: 600; }
+.roi-private { display: flex; align-items: center; gap: 9px; margin-top: 18px; background: rgba(31, 169, 198, .08); border-radius: 8px; padding: 10px 14px; font-size: .85rem; color: var(--text-muted); }
+.roi-lock { display: grid; place-items: center; flex-shrink: 0; color: var(--teal); }
+.roi-lock svg { width: 15px; height: 15px; stroke: currentColor; }
+.roi-disclaimer { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 18px; font-size: .8rem; font-style: italic; color: var(--text-muted); }
+.roi-disclaimer::before, .roi-disclaimer::after { content: ""; width: 56px; height: 1px; background: rgba(27, 58, 95, .18); }
+@media (max-width: 1024px) {
+  .roi-calc { grid-template-columns: 1fr; gap: 24px; }
+}
+@media (max-width: 640px) {
+  .roi-calc { padding: 24px 20px; }
+  .roi-fields { grid-template-columns: 1fr; gap: 12px; }
+  .roi-field label, .roi-result-label { min-height: 0; }
+  .roi-op { align-self: center; margin: 0 auto; }
+  .roi-result-col { margin-top: 6px; }
+}
+
 /* Pricing */
 .pricing { background: var(--band-white); }
 .pricing .price-card { border: 1px solid var(--border); }

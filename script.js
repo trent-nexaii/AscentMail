@@ -333,4 +333,23 @@
     window.addEventListener("resize", setStatHeight);
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(setStatHeight);
   }
+
+  /* ROI calculator (Why Ascent band) */
+  var roiProfit = document.getElementById("roi-profit");
+  var roiCustomers = document.getElementById("roi-customers");
+  if (roiProfit && roiCustomers) {
+    var roiResult = document.getElementById("roi-result");
+    var roiMonthly = document.getElementById("roi-monthly");
+    var formatDollars = function (n) {
+      return "$" + Math.round(n).toLocaleString("en-AU");
+    };
+    var updateRoi = function () {
+      var annual = (parseFloat(roiProfit.value) || 0) * (parseFloat(roiCustomers.value) || 0);
+      roiResult.textContent = formatDollars(annual);
+      roiMonthly.textContent = formatDollars(annual / 12);
+    };
+    roiProfit.addEventListener("input", updateRoi);
+    roiCustomers.addEventListener("input", updateRoi);
+    updateRoi();
+  }
 })();
