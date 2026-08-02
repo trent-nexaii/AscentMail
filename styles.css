@@ -359,6 +359,45 @@ section { padding: 60px 0; }
 .advantage-sub { margin-top: 14px; font-size: 1.32rem; font-weight: 600; color: var(--navy); line-height: 1.45; }
 .advantage-tagline { margin-top: 8px; font-size: .95rem; color: var(--text-muted); }
 
+/* Where Opportunity Begins */
+.opportunity { background: var(--band-white); }
+.ob-card { padding: 44px; }
+.ob-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 28px; }
+.ob-grid > .ob-col { border-left: 1px solid var(--border); padding-left: 28px; text-align: center; }
+.ob-intro h2 { font-size: clamp(1.5rem, 2.6vw, 1.95rem); margin-bottom: 14px; }
+.ob-rule { display: block; width: 44px; height: 3px; border-radius: 2px; background: var(--teal); margin-bottom: 18px; }
+.ob-lead { color: var(--text-muted); line-height: 1.7; margin-bottom: 16px; }
+.ob-exists { color: var(--teal); font-weight: 700; margin-bottom: 16px; }
+.ob-question { font-family: var(--font-head); font-weight: 600; color: var(--navy); line-height: 1.55; }
+.ob-icon { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; background: rgba(31, 169, 198, .12); color: var(--teal); margin: 0 auto 12px; }
+.ob-icon svg { width: 26px; height: 26px; stroke: currentColor; }
+.ob-col h3 { font-size: 1.05rem; margin-bottom: 4px; }
+.ob-sub { font-size: .88rem; font-weight: 500; color: var(--text-muted); margin-bottom: 12px; }
+.ob-list { display: flex; flex-direction: column; gap: 9px; width: fit-content; margin: 0 auto; text-align: left; }
+.ob-list li { display: flex; align-items: center; gap: 10px; font-size: .93rem; font-weight: 500; }
+.ob-col-centred { display: flex; flex-direction: column; align-items: center; }
+.ob-statement { font-family: var(--font-head); font-weight: 600; color: var(--navy); font-size: 1rem; line-height: 1.6; margin: auto 0; padding: 10px 0; max-width: 24ch; }
+@media (max-width: 1024px) {
+  .ob-grid { grid-template-columns: repeat(3, 1fr); }
+  .ob-intro { grid-column: 1 / -1; padding-bottom: 28px; border-bottom: 1px solid var(--border); }
+  .ob-grid > .ob-col:nth-child(2) { border-left: 0; padding-left: 0; }
+}
+@media (max-width: 640px) {
+  .ob-card { padding: 28px 22px; }
+  .ob-grid { grid-template-columns: 1fr; gap: 24px; }
+  .ob-grid > .ob-col { border-left: 0; padding-left: 0; border-top: 1px solid var(--border); padding-top: 24px; }
+  .ob-grid > .ob-col:nth-child(2) { border-top: 0; padding-top: 0; }
+}
+
+/* "If you help homeowners" strip */
+.helper-strip { position: relative; background: var(--band-ice); padding: 48px 0 52px; text-align: center; }
+.hh-icon { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; background: var(--white); box-shadow: var(--shadow); color: var(--teal); margin: 0 auto 14px; }
+.hh-icon svg { width: 24px; height: 24px; stroke: currentColor; }
+.hh-title { font-size: clamp(1.25rem, 2.5vw, 1.6rem); }
+.hh-lines { margin-top: 12px; color: var(--text-muted); line-height: 1.7; }
+@media (min-width: 768px) { .hh-lines span { display: block; } }
+.hh-chevron { position: absolute; left: 50%; bottom: -9px; width: 15px; height: 15px; border-right: 2.5px solid var(--teal); border-bottom: 2.5px solid var(--teal); transform: translateX(-50%) rotate(45deg); }
+
 /* A Better First Impression */
 .first-impression { background: var(--band-white); }
 .fi-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 48px; align-items: center; }
@@ -736,7 +775,8 @@ h2.feature-eyebrow { display: block; text-align: center; margin-bottom: 44px; co
 .plan-check svg { width: 12px; height: 12px; stroke: currentColor; }
 
 .join-steps { margin-top: 48px; }
-.join-steps .eyebrow-ruled { margin-bottom: 32px; }
+.join-steps .eyebrow-ruled { margin-bottom: 12px; }
+.join-subtitle { font-family: var(--font-head); font-weight: 700; font-size: clamp(1.3rem, 2.6vw, 1.65rem); color: var(--navy); text-align: center; margin-bottom: 36px; }
 .join-flow { display: flex; align-items: flex-start; justify-content: center; gap: 6px; }
 .join-flow > li:not(.join-arrow) { display: flex; flex-direction: column; align-items: center; text-align: center; flex: 1; max-width: 176px; }
 .join-num { display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: var(--navy); color: var(--white); font-family: var(--font-head); font-weight: 600; font-size: .72rem; margin-bottom: 8px; }
@@ -747,6 +787,14 @@ h2.feature-eyebrow { display: block; text-align: center; margin-bottom: 44px; co
 .join-desc { font-size: .8rem; color: var(--text-muted); line-height: 1.45; }
 .join-arrow { flex: 0 0 40px; margin-top: 62px; border-top: 2px dashed rgba(31, 169, 198, .5); position: relative; }
 .join-arrow::after { content: ""; position: absolute; right: -2px; top: -5px; border: 4px solid transparent; border-left-color: rgba(31, 169, 198, .6); }
+
+.join-divider { border: 0; height: 1px; background: var(--border); margin: 40px 0 30px; }
+.join-notes { max-width: 660px; margin: 0 auto; display: flex; flex-direction: column; gap: 18px; }
+.join-notes li { display: flex; align-items: center; gap: 16px; text-align: left; }
+.join-note-icon { display: grid; place-items: center; flex-shrink: 0; width: 44px; height: 44px; border-radius: 50%; background: rgba(31, 169, 198, .12); color: var(--teal); }
+.join-note-icon svg { width: 22px; height: 22px; stroke: currentColor; }
+.join-notes p { font-size: .95rem; line-height: 1.55; }
+.join-note-bold { font-weight: 600; color: var(--navy); }
 
 .founding-banner { display: flex; align-items: center; justify-content: space-between; gap: 24px 32px; flex-wrap: wrap; background: var(--navy); border-radius: var(--radius); padding: 26px 32px; margin-top: 44px; color: rgba(255, 255, 255, .85); }
 .founding-left { display: flex; align-items: center; gap: 18px; }
